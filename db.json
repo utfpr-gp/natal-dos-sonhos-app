@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "id": "10",
+      "username": "tomaz.leite",
+      "password": "qwerty",
+      "isAdmin": true
+    }
+  ],
+  "letters": [
+    {
+      "id": "10",
+      "imageURL": "http://bola.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": 490,
+      "name": "Bola de plástico",
+      "imageURL": "http://bola.jpg",
+      "description": "uma bola",
+      "price": 10,
+      "raised": 5.23,
+      "letterId": "10"
+    },
+    {
+      "id": 491,
+      "name": "Bola de couro",
+      "imageURL": "http://bola.jpg",
+      "description": "uma bola",
+      "price": 10,
+      "raised": 5.23,
+      "letterId": "11"
+    }
+  ],
+  "cities": [
+    {
+      "name": "Guarapuava",
+      "state": {
+        "id": 1,
+        "name": "Paraná",
+        "abbreviation": "PR"
+      },
+      "id": 1,
+      "imagePath": "https://picsum.photos/200/300"
+    },
+    {
+      "name": "Porto União",
+      "state": {
+        "id": 2,
+        "name": "Santa Catarina",
+        "abbreviation": "SC"
+      },
+      "imagePath": "dsfs",
+      "id": 2
+    }
+  ]
+}

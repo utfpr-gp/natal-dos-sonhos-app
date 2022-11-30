@@ -1,10 +1,17 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { LandPageComponent } from './components/visitor/land-page/land-page.component';
+import { NgModule } from '@angular/core';
+import { PageNotFoundComponent } from './components/visitor/page-not-found/page-not-found.component';
+
+const routes: Routes = [
+  { path: 'inicio', component: LandPageComponent },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
