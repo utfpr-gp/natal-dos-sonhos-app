@@ -13,6 +13,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { PageNotFoundComponent } from './components/visitor/page-not-found/page-not-found.component';
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { ChristmasCountdownComponent } from './components/visitor/christmas-countdown/christmas-countdown.component';
 
 registerLocaleData(ptBr);
 @NgModule({
@@ -22,6 +23,7 @@ registerLocaleData(ptBr);
     FooterComponent,
     LandPageComponent,
     PageNotFoundComponent,
+    ChristmasCountdownComponent,
   ],
   imports: [
     BrowserModule,

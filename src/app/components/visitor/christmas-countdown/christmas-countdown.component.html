@@ -1,0 +1,15 @@
+<div class="christmas-countdown">
+  <i class="material-icons">{{ this.todayIsChristmas ? "check" : "info" }}</i>
+
+  <p class="christmas-countdown__message" *ngIf="this.todayIsChristmas">
+    Hoje é Natal!
+  </p>
+
+  <p class="christmas-countdown__message" *ngIf="!this.todayIsChristmas">
+    {{
+      this.daysToChristmas === 1
+        ? "Amanhã é Natal!"
+        : "Faltam " + this.daysToChristmas + " dias para o Natal"
+    }}!
+  </p>
+</div>
