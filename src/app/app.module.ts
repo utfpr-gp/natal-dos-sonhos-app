@@ -14,6 +14,7 @@ import { PageNotFoundComponent } from './components/visitor/page-not-found/page-
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { ChristmasCountdownComponent } from './components/visitor/christmas-countdown/christmas-countdown.component';
+import { LettersCardListComponent } from './components/visitor/letters-card-list/letters-card-list.component';
 
 registerLocaleData(ptBr);
 @NgModule({
@@ -24,6 +25,7 @@ registerLocaleData(ptBr);
     LandPageComponent,
     PageNotFoundComponent,
     ChristmasCountdownComponent,
+    LettersCardListComponent,
   ],
   imports: [
     BrowserModule,
