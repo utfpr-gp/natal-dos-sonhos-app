@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class ChristmasCountdownComponent implements OnInit {
   daysToChristmas: number = 0;
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit(): void {
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
     const currentYearChristmas = new Date(currentYear, 11, 25);
@@ -23,8 +25,6 @@ export class ChristmasCountdownComponent implements OnInit {
 
     this.daysToChristmas = diffDays;
   }
-
-  ngOnInit(): void {}
 
   get todayIsChristmas() {
     return this.daysToChristmas === 0;
