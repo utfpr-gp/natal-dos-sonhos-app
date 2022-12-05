@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { Shared } from './../../../util/shared';
 import { Subscription } from 'rxjs';
 import { WebStorageUtil } from './../../../util/web-storage-util';
+import { Letter } from 'src/app/types';
+import { LetterService } from 'src/app/services/letter.service';
 
 @Component({
   selector: 'app-land-page',
@@ -16,11 +18,20 @@ export class LandPageComponent implements OnInit {
   imageURL: string = 'assets/resources/images/criancas-carentes.jpg';
   loggedIn = false;
   subscription!: Subscription;
+  letters: Letter[] = [];
 
-  constructor(private router: Router, private loginService: LoginService) {
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+    private siteService: LetterService
+  ) {
     this.subscription = this.loginService.asObservable().subscribe((data) => {
       this.loggedIn = data;
       console.log('observer - land-page');
+    });
+
+    this.siteService.getAll().subscribe((data) => {
+      this.letters = data;
     });
   }
 
