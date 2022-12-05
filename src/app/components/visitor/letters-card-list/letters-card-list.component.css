@@ -2,6 +2,10 @@
   width: 90%;
 }
 
+.letters-card-list__item {
+  cursor: pointer;
+}
+
 .letters-card-list__item-title {
   margin-top: 0;
 }
