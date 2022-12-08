@@ -1,0 +1,21 @@
+body {
+  font-family: Helvetica;
+}
+input[type="file"] {
+  display: none;
+}
+
+.fileLabel {
+  padding: 20px 10px;
+  width: 200px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.buttonSubmit {
+  width: 40%;
+}
