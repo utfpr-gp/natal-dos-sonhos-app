@@ -1,0 +1,24 @@
+.letters-card-list {
+  width: 90%;
+}
+
+.letters-card-list__item {
+  cursor: pointer;
+}
+
+.letters-card-list__item-title {
+  margin-top: 0;
+}
+
+.letters-card-list__item-image {
+  height: 200px;
+  object-fit: contain;
+}
+
+.letters-card-list__item-texts-container {
+  margin-bottom: 0;
+}
+
+.letters-card-list__item-progress-bar {
+  height: 15px;
+}
