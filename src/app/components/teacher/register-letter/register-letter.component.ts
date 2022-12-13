@@ -71,7 +71,9 @@ export class RegisterLetterComponent implements OnInit {
     this.productService
       .save(this.product, this.productImage)
       .subscribe((product) => {
-        this.letterService.save(this.letter, this.letterImage, product.id);
+        this.letterService
+          .save(this.letter, this.letterImage, product.id)
+          .subscribe();
       });
   }
 
