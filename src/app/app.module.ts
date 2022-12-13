@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from './layout/footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LandPageComponent } from './components/visitor/land-page/land-page.component';
 import { MenuComponent } from './layout/menu/menu.component';
@@ -16,6 +16,12 @@ import { registerLocaleData } from '@angular/common';
 import { ChristmasCountdownComponent } from './components/visitor/christmas-countdown/christmas-countdown.component';
 import { LettersCardListComponent } from './components/visitor/letters-card-list/letters-card-list.component';
 import { LetterPageComponent } from './components/visitor/letter-page/letter-page/letter-page.component';
+import { LoginComponent } from './components/visitor/login/login.component';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { SignUpComponent } from './components/visitor/sign-up/sign-up.component';
 
 registerLocaleData(ptBr);
 @NgModule({
@@ -28,12 +34,19 @@ registerLocaleData(ptBr);
     ChristmasCountdownComponent,
     LettersCardListComponent,
     LetterPageComponent,
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatIconModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     NgxMaskModule.forRoot(),
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
