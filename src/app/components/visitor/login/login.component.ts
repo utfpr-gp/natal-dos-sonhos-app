@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   enter(){
-
+    this.router.navigate(["administrador/home"]);
   }
 
   return(){
