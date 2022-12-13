@@ -13,7 +13,7 @@
             />
             <mat-error *ngIf="this.loginForm.get('username').hasError('required')">
             Campo obrigatório</mat-error>
-            <mat-error *ngIf="this.loginForm.get('username').hasError('strong') && this.loginForm.get('username').hasError('required')">
+            <mat-error *ngIf="this.loginForm.get('username').hasError('strong') && !this.loginForm.get('username').hasError('required')">
                 Usuário deve possuir letras maiúsculas e minúsculas, números e não são permitidos caracteres especiais</mat-error>
         </mat-form-field>
             <br>
@@ -31,14 +31,14 @@
                 <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 <mat-error *ngIf="this.loginForm.get('password').hasError('required')">
                     Campo obrigatório</mat-error>
-                <mat-error *ngIf="this.loginForm.get('password').hasError('strong') && this.loginForm.get('password').hasError('required')">
+                <mat-error *ngIf="this.loginForm.get('password').hasError('strong') && !this.loginForm.get('password').hasError('required')">
                     Senha deve possuir letras maiúsculas e minúsculas, números e não são permitidos caracteres especiais</mat-error>
         </mat-form-field>
     </div>
 </form>
 <div class="mt-5" style="margin-left:-2em">
     <button  
-        style="float: right;margin-right:3em"
+        style="float: right;margin-right:5em"
         class="waves-effect waves-light btn-small"
         (click)="enter()"
         [disabled]="!loginForm.valid"

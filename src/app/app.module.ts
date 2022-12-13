@@ -22,6 +22,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { SignUpComponent } from './components/visitor/sign-up/sign-up.component';
+import { AdminHomeComponent } from './components/administrator/admin-home/admin-home.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatTableModule} from '@angular/material/table';
+import { ClassesComponent } from './components/administrator/classes/classes.component';
 
 registerLocaleData(ptBr);
 @NgModule({
@@ -35,7 +39,9 @@ registerLocaleData(ptBr);
     LettersCardListComponent,
     LetterPageComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    AdminHomeComponent,
+    ClassesComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -44,6 +50,8 @@ registerLocaleData(ptBr);
     HttpClientModule,
     MatIconModule,
     FormsModule,
+    MatTableModule,
+    MatNativeDateModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
