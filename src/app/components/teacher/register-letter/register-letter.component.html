@@ -4,7 +4,7 @@
     <form class="col s12" #form="ngForm" (submit)="onSubmit()">
       <div class="row">
         <div class="input-field col s12">
-          <select #classSelect (change)="onSelected()">
+          <select #classroomSelect (change)="onClassroomSelected()">
             <option disabled selected>Escolha a turma</option>
             <option *ngFor="let class of classrooms">
               {{ class.name }}
@@ -16,9 +16,9 @@
             id="name"
             type="text"
             class="validate"
-            [(ngModel)]="this.studentName"
             required
             name="name"
+            [(ngModel)]="this.letter.studentName"
             #name="ngModel"
           />
           <label class="active" for="name">Nome do aluno</label>
@@ -40,28 +40,44 @@
         <div class="input-field col s6">
           <input
             id="productName"
+            name="productName"
             type="text"
             class="validate"
-            [(ngModel)]="this.productName"
             required
-            name="productName"
+            [(ngModel)]="this.product.name"
             #name="ngModel"
           />
           <label class="active" for="productName">Nome do produto</label>
         </div>
+
         <div class="input-field col s6">
           <input
             id="productPrice"
+            name="productPrice"
             type="number"
             class="validate"
-            [(ngModel)]="this.productPrice"
-            required
-            name="productPrice"
+            [(ngModel)]="this.product.price"
             #name="ngModel"
+            required
           />
           <label class="active" for="productPrice">Preço do produto</label>
         </div>
+
         <div class="input-field col s12">
+          <input
+            id="productDescription"
+            name="productDescription"
+            type="text"
+            class="validate"
+            required
+            [(ngModel)]="this.product.description"
+            #name="ngModel"
+          />
+          <label class="active" for="productDescription"
+            >Descrição do produto</label
+          >
+        </div>
+        <div class="input-field col s6">
           <div>
             <label class="fileLabel amber accent-4" for="inputFileProduct"
               >Foto do produto</label
@@ -75,6 +91,7 @@
             <div>{{ productSelected }}</div>
           </div>
         </div>
+
         <div class="input-field col s12 center">
           <button class="btn amber accent-4 buttonSubmit" type="submit">
             Cadastrar

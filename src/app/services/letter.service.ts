@@ -26,11 +26,20 @@ export class LetterService {
     );
   }
 
-  save(letter: Letter, letterImageFile: File, productImageFile: File) {
+  save(letter: Letter, imageFile: File, productId: number) {
+    letter.productId = productId;
+    letter.id = Math.round(Math.random() * 1000);
+
     const formData = new FormData();
-    formData.append('file', letterImageFile);
+    formData.append('file', imageFile);
     formData.append('upload_preset', this.CLOUDINARY_UPLOAD_PRESET);
 
-    return this.httpClient.post(this.CLOUDINARY_URL, formData);
+    this.httpClient
+      .post(this.CLOUDINARY_URL, formData)
+      .subscribe((res: any) => {
+        letter.imageURL = res.secure_url;
+      });
+
+    return this.httpClient.post<Letter>(this.URL, letter);
   }
 }
