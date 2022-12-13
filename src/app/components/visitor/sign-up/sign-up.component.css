@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+
+.box-login{
+    margin: auto;
+    height:35em;
+    width: 30em;
+    text-align: center;
+    padding: 2em;
+}
+
+
+mat-form-field {
+    
+    padding: 2em;
+    width: 27em;
+
+}
+
+.label{
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(131, 6, 6);
+    font-family: 'Satisfy';
+}
+

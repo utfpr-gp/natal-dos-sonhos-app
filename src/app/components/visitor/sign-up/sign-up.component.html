@@ -1,0 +1,71 @@
+<div class="box-login"style="margin-bottom:20em">
+    <form [formGroup]="signUpForm">
+    <div style="margin-top:5em">
+        <label for="username" class="label">Usuário</label>
+        <br>
+        <mat-form-field style="margin-bottom: 1.5em;">
+        <input 
+            matInput
+            class="input"
+            type="text" 
+            formControlName="username" 
+            placeholder="Digite seu usuário"
+            />
+            <mat-error *ngIf="this.signUpForm.get('username').hasError('required')">
+            Campo obrigatório</mat-error>
+            <mat-error *ngIf="this.signUpForm.get('username').hasError('strong') && this.signUpForm.get('username').hasError('required')">
+                Usuário deve possuir letras maiúsculas e minúsculas, números e não são permitidos caracteres especiais</mat-error>
+        </mat-form-field>
+            <br>
+        <label for="password" class="label">Senha</label>
+        <br>
+        <mat-form-field style="margin-bottom:1.5em">
+            <input 
+                matInput
+                class="input"
+                formControlName="password"
+                [type]="hide ? 'password' : 'text'"
+                placeholder="Digite sua senha"
+                required/>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-error *ngIf="this.signUpForm.get('password').hasError('required')">
+                    Campo obrigatório</mat-error>
+                <mat-error *ngIf="this.signUpForm.get('password').hasError('strong') && !this.signUpForm.get('password').hasError('required')" >
+                    Senha deve possuir letras maiúsculas e minúsculas, números e não são permitidos caracteres especiais</mat-error>
+        </mat-form-field>
+        <label for="password" class="label">Confirmar Senha</label>
+        <br>
+        <mat-form-field style="margin-bottom:1.5em">
+            <input 
+                matInput
+                class="input"
+                formControlName="confirm_password"
+                [type]="hide ? 'password' : 'text'"
+                placeholder="Digite sua senha"
+                required/>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-error *ngIf="this.signUpForm.get('confirm_password').hasError('required')">
+                    Campo obrigatório</mat-error>
+                <mat-error *ngIf="this.signUpForm.get('confirm_password').hasError('strong') && this.signUpForm.get('confirm_password').hasError('required')">
+                    Senha deve possuir letras maiúsculas e minúsculas, números e não são permitidos caracteres especiais</mat-error>
+                <mat-hint *ngIf="this.signUpForm.get('password').value != this.signUpForm.get('confirm_password').value">
+                    Valores não coincidem</mat-hint>    
+        </mat-form-field>
+    </div>
+</form>
+<div class="mt-5" style="margin-left:-2em">
+    <button  
+        style="float: right;margin-right:3em"
+        class="waves-effect waves-light btn-small"
+        (click)="signUp()"
+        [disabled]="!signUpForm.valid"
+    ><i class="fa fa-save"></i> Cadastrar
+    </button>
+    <button
+        class="waves-effect waves-light btn-small yellow darken-1"
+        (click)="return()"
+    ><i class="fa fa-reply"></i> Voltar
+    </button>
+</div>
+</div>
+<router-outlet></router-outlet>
