@@ -1,14 +1,16 @@
 export type Letter = {
   id: string;
-  classroom: { name: string };
-  studentName: string;
   imageURL: string;
+  productId: number;
   product?: Product;
 };
 
 export type Product = {
-  id: string;
+  id: number;
   name: string;
   imageURL: string;
+  description: string;
   price: number;
+  raised: number;
+  letterId: string;
 };

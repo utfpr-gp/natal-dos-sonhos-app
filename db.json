@@ -10,7 +10,8 @@
   "letters": [
     {
       "id": "10",
-      "imageURL": "http://bola.jpg"
+      "imageURL": "http://bola.jpg",
+      "productId": 490
     }
   ],
   "products": [
@@ -20,8 +21,7 @@
       "imageURL": "http://bola.jpg",
       "description": "uma bola",
       "price": 10,
-      "raised": 5.23,
-      "letterId": "10"
+      "raised": 5.23
     },
     {
       "id": 491,
@@ -29,8 +29,7 @@
       "imageURL": "http://bola.jpg",
       "description": "uma bola",
       "price": 10,
-      "raised": 5.23,
-      "letterId": "11"
+      "raised": 5.23
     }
   ],
   "cities": [
