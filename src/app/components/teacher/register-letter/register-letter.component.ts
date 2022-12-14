@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ClassroomService } from 'src/app/services/classroom.service';
 import { LetterService } from 'src/app/services/letter.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -30,7 +31,8 @@ export class RegisterLetterComponent implements OnInit {
 
   constructor(
     private letterService: LetterService,
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ) {
     this.classrooms = [
       { id: 1, schoolId: 1, name: '1a' },
@@ -68,13 +70,14 @@ export class RegisterLetterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.productService
-      .save(this.product, this.productImage)
-      .subscribe((product) => {
-        this.letterService
-          .save(this.letter, this.letterImage, product.id)
-          .subscribe();
-      });
+    this.product.id = Math.round(Math.random() * 1000);
+
+    this.productService.save(this.product, this.productImage).subscribe();
+    this.letterService
+      .save(this.letter, this.letterImage, this.product.id)
+      .subscribe();
+
+    this.router.navigate(['']);
   }
 
   ngAfterViewInit(): void {
