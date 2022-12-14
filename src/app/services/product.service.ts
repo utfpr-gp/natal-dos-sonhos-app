@@ -1,12 +1,16 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Letter, Product } from '../types';
+import { concatMap, Observable } from 'rxjs';
+import { Product } from '../types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
   URL = 'http://localhost:3000/products';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   CLOUDINARY_NAME = '';
   CLOUDINARY_UPLOAD_PRESET = '';
@@ -15,18 +19,16 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) {}
 
-  save(product: Product, imageFile: File) {
-    product.id = Math.round(Math.random() * 1000);
+  save(product: Product, imageFile: File): Observable<Product> {
     const formData = new FormData();
     formData.append('file', imageFile);
     formData.append('upload_preset', this.CLOUDINARY_UPLOAD_PRESET);
 
-    this.httpClient
-      .post(this.CLOUDINARY_URL, formData)
-      .subscribe((res: any) => {
+    return this.httpClient.post(this.CLOUDINARY_URL, formData).pipe(
+      concatMap((res: any) => {
         product.imageURL = res.secure_url;
-      });
-
-    return this.httpClient.post<Product>(this.URL, product);
+        return this.httpClient.post<Product>(this.URL, product);
+      })
+    );
   }
 }

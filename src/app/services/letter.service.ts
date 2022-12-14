@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { concatMap, Observable } from 'rxjs';
 import { Letter } from '../types';
 
 @Injectable({
@@ -26,7 +27,7 @@ export class LetterService {
     );
   }
 
-  save(letter: Letter, imageFile: File, productId: number) {
+  save(letter: Letter, imageFile: File, productId: number): Observable<Letter> {
     letter.productId = productId;
     letter.id = Math.round(Math.random() * 1000);
 
@@ -34,12 +35,11 @@ export class LetterService {
     formData.append('file', imageFile);
     formData.append('upload_preset', this.CLOUDINARY_UPLOAD_PRESET);
 
-    this.httpClient
-      .post(this.CLOUDINARY_URL, formData)
-      .subscribe((res: any) => {
+    return this.httpClient.post(this.CLOUDINARY_URL, formData).pipe(
+      concatMap((res: any) => {
         letter.imageURL = res.secure_url;
-      });
-
-    return this.httpClient.post<Letter>(this.URL, letter);
+        return this.httpClient.post<Letter>(this.URL, letter);
+      })
+    );
   }
 }
