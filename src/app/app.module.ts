@@ -14,6 +14,7 @@ import { PageNotFoundComponent } from './components/visitor/page-not-found/page-
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { ChristmasCountdownComponent } from './components/visitor/christmas-countdown/christmas-countdown.component';
+import { RegisterLetterComponent } from './components/teacher/register-letter/register-letter.component';
 import { LettersCardListComponent } from './components/visitor/letters-card-list/letters-card-list.component';
 import { LetterPageComponent } from './components/visitor/letter-page/letter-page/letter-page.component';
 
@@ -26,6 +27,7 @@ registerLocaleData(ptBr);
     LandPageComponent,
     PageNotFoundComponent,
     ChristmasCountdownComponent,
+    RegisterLetterComponent,
     LettersCardListComponent,
     LetterPageComponent,
   ],

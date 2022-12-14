@@ -1,44 +1,33 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { concatMap, Observable } from 'rxjs';
-import { Letter } from '../types';
+import { Product } from '../types';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LetterService {
-  URL = 'http://localhost:3000/letters';
+export class ProductService {
+  URL = 'http://localhost:3000/products';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   CLOUDINARY_NAME = '';
   CLOUDINARY_UPLOAD_PRESET = '';
 
   CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${this.CLOUDINARY_NAME}/image/upload`;
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  };
-
   constructor(private httpClient: HttpClient) {}
 
-  getAll() {
-    return this.httpClient.get<Letter[]>(
-      `${this.URL}?_expand=product`,
-      this.httpOptions
-    );
-  }
-
-  save(letter: Letter, imageFile: File, productId: number): Observable<Letter> {
-    letter.productId = productId;
-    letter.id = Math.round(Math.random() * 1000);
-
+  save(product: Product, imageFile: File): Observable<Product> {
     const formData = new FormData();
     formData.append('file', imageFile);
     formData.append('upload_preset', this.CLOUDINARY_UPLOAD_PRESET);
 
     return this.httpClient.post(this.CLOUDINARY_URL, formData).pipe(
       concatMap((res: any) => {
-        letter.imageURL = res.secure_url;
-        return this.httpClient.post<Letter>(this.URL, letter);
+        product.imageURL = res.secure_url;
+        return this.httpClient.post<Product>(this.URL, product);
       })
     );
   }

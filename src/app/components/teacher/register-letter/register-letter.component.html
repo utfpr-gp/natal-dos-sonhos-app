@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row">
+    <h4>Cadastrar carta</h4>
+    <form class="col s12" #form="ngForm" (submit)="onSubmit()">
+      <div class="row">
+        <div class="input-field col s12">
+          <select #classroomSelect (change)="onClassroomSelected()">
+            <option disabled selected>Escolha a turma</option>
+            <option *ngFor="let class of classrooms">
+              {{ class.name }}
+            </option>
+          </select>
+        </div>
+        <div class="input-field col s12">
+          <input
+            id="name"
+            type="text"
+            class="validate"
+            required
+            name="name"
+            [(ngModel)]="this.letter.studentName"
+            #name="ngModel"
+          />
+          <label class="active" for="name">Nome do aluno</label>
+        </div>
+        <div class="input-field col s12">
+          <div>
+            <label class="fileLabel amber accent-4" for="inputFile"
+              >Selecionar carta</label
+            >
+            <input
+              type="file"
+              name="inputFile"
+              id="inputFile"
+              (change)="onLetterSelected($event)"
+            />
+            <div>{{ letterSelected }}</div>
+          </div>
+        </div>
+        <div class="input-field col s6">
+          <input
+            id="productName"
+            name="productName"
+            type="text"
+            class="validate"
+            required
+            [(ngModel)]="this.product.name"
+            #name="ngModel"
+          />
+          <label class="active" for="productName">Nome do produto</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input
+            id="productPrice"
+            name="productPrice"
+            type="number"
+            class="validate"
+            [(ngModel)]="this.product.price"
+            #name="ngModel"
+            required
+          />
+          <label class="active" for="productPrice">Preço do produto</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input
+            id="productDescription"
+            name="productDescription"
+            type="text"
+            class="validate"
+            required
+            [(ngModel)]="this.product.description"
+            #name="ngModel"
+          />
+          <label class="active" for="productDescription"
+            >Descrição do produto</label
+          >
+        </div>
+        <div class="input-field col s6">
+          <div>
+            <label class="fileLabel amber accent-4" for="inputFileProduct"
+              >Foto do produto</label
+            >
+            <input
+              type="file"
+              name="inputFileProduct"
+              id="inputFileProduct"
+              (change)="onProductSelected($event)"
+            />
+            <div>{{ productSelected }}</div>
+          </div>
+        </div>
+
+        <div class="input-field col s12 center">
+          <button class="btn amber accent-4 buttonSubmit" type="submit">
+            Cadastrar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
